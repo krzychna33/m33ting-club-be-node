@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  pg1:
+    image: postgres:14.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./database/:/docker-entrypoint-initdb.d/
+      - ./data/postgres:/var/lib/postgresql/data
